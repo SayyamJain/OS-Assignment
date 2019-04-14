@@ -1,5 +1,6 @@
 #include<stdio.h>
-#include <stdlib.h>
+#include<unistd.h>
+#include<stdlib.h>
 struct process{
 	int priority, burst_time, pid, waiting_time, turnaround_time, remaining_time, arrival_time;
 };
@@ -17,7 +18,7 @@ void printQueue(struct process *,int);
 //q1 = Batch Process having Low Priority with FCFS Algorithm
 //q2 = Interactive Process having Medium Priority with Priority Based Sorting
 //q3 = System Process having High Priority with Round Robin Algorith Quantum Time=4
-int q1_n=0,q2_n=0,q3_n=0,n=0; //N=Total Process
+int q1_n=0,q2_n=0,q3_n=0,n=0; //n=Total Process
 struct process *q1,*q2,*q3;
 //Time Quantum
 int time_quantum = 4;
@@ -51,8 +52,8 @@ void getInput(){
 void printQueue(struct process *q,int size){	
 	calcWaitingTime(q,size);
 	calcTurnAroundTime(q,size);
-	printf("\nPId\t\tPriority\t\tBurst Time\t\tWaiting Time\t\tTurnAround Time\t\tArrival");
-	printf("\n================================================================================\n");
+	printf("\nPId\t\tPriority\t\tBurst Time\t\tWaiting Time\t\tTA Time\t\tArrival");
+	printf("\n=======================================================================================================================\n");
 	for(int i=0;i<size;i++){
 		printQueueI(q[i]);
 	}
@@ -103,16 +104,14 @@ void RoundRobinAlgo(struct process *q,int size){
 
 		q[i] = p;
 	}
-	printf("\nAverage Waiting Time= %f\n",wait_time*1.0/n); 
-	printf("Avg Turnaround Time = %f\n",tat_time*1.0/n); 	
 }
 void RoundRobin(){
-	printf("\n\n===========================================================================");
-	printf("\n\t\tRound Robin\t");
-	printf("\n===========================================================================\n\n");
+	printf("\n\n======================================================================================================================");
+	printf("\n\t\t\t\t\t\tRound Robin\t");
+	printf("\n======================================================================================================================\n\n");
 
 	printf("\nPId\t\tPriority\t\tBurst Time\t\tWaiting Time\t\tTurnAround Time");
-	printf("\n================================================================================\n");
+	printf("\n======================================================================================================================\n");
 	calcWaitingTime(q3,q3_n);
 	calcTurnAroundTime(q3,q3_n);
 
@@ -130,9 +129,9 @@ void PrioSortingAlgorithm(struct process *q,int size){
 	}
 }
 void PrioSorting(){
-	printf("\n\n===========================================================================");
-	printf("\n\t\tPriority Sorting\t");
-	printf("\n===========================================================================\n\n");
+	printf("\n\n=======================================================================================================================");
+	printf("\n\t\t\t\t\t\tPriority Sorting\t");
+	printf("\n=======================================================================================================================\n\n");
 	PrioSortingAlgorithm(q2,q2_n);
 	printQueue(q2,q2_n);
 }
@@ -148,9 +147,9 @@ void FCFSAlgorithm(struct process *q,int size){
 	}
 }
 void FCFS(){
-	printf("\n\n===========================================================================");
-	printf("\n\t\tFirst Come First Serve\t");
-	printf("\n===========================================================================\n\n");
+	printf("\n\n=======================================================================================================================");
+	printf("\n\t\t\t\t\t\tFirst Come First Serve\t");
+	printf("\n=======================================================================================================================\n\n");
 	FCFSAlgorithm(q1,q1_n);
 	printQueue(q1,q1_n);
 }
