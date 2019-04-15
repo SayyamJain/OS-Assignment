@@ -14,7 +14,7 @@ void FCFS();
 void printQueueI(struct process);
 void printQueue(struct process *,int);
 
-//Queues
+//queues
 //q1 = Batch Process having Low Priority with FCFS Algorithm
 //q2 = Interactive Process having Medium Priority with Priority Based Sorting
 //q3 = System Process having High Priority with Round Robin Algorith Quantum Time=4
@@ -23,7 +23,7 @@ struct process *q1,*q2,*q3;
 //Time Quantum
 int time_quantum = 4;
 void getInput(){
-	printf("\n Total Number of Process:\t");
+	printf("\nTotal Number of Process::\t");
 	scanf("%d",&n);
 	//Allocatig Memory
 	q1 = (struct process *)malloc(n*sizeof(struct process));
@@ -44,9 +44,9 @@ void getInput(){
 			q1[q1_n++]  = p;
 		}else if(p.priority>3 && p.priority<=6){
 			q2[q2_n++] = p;
-		}else{
+		}else if(p.priority>6 && p.priority<=9){
 			q3[q3_n++] = p;
-		}		
+		}else(printf("\nInvalid input"));		
 	}
 }
 void printQueue(struct process *q,int size){	
